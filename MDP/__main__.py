@@ -18,18 +18,21 @@ def main():
 
     v0 = 0
     v = np.full(
-        (1, NUM_STATES, PROD_SETTINGS, MAX_PROD_TIME, MAX_MAIN_TIME, STOCK_SIZE),
-        v0)
+        (1, NUM_STATES, PROD_SETTINGS, MAX_PROD_TIME, MAX_MAIN_TIME, STOCK_SIZE)
+        , v0
+        , dtype="float")
 
     action_1 = np.full(
-        (1, NUM_STATES, PROD_SETTINGS, MAX_PROD_TIME, MAX_MAIN_TIME, STOCK_SIZE),
-        np.inf)
+        (1, NUM_STATES, PROD_SETTINGS, MAX_PROD_TIME, MAX_MAIN_TIME, STOCK_SIZE)
+        , np.inf)
 
     action_2 = np.full(
-        (1, NUM_STATES, PROD_SETTINGS, MAX_PROD_TIME, MAX_MAIN_TIME, STOCK_SIZE),
+        (
+            1, NUM_STATES, PROD_SETTINGS, MAX_PROD_TIME, MAX_MAIN_TIME,
+            STOCK_SIZE),
         np.inf)
 
-    epsilon = 0.01
+    epsilon = 0.001
     span = 2 * epsilon
 
     while span > epsilon:
@@ -42,7 +45,8 @@ def main():
              MAX_PROD_TIME,
              MAX_MAIN_TIME,
              STOCK_SIZE),
-            np.inf)
+            M,
+            dtype="float")
         v = np.concatenate((v, v_n), axis=0)
 
         action_1_n = np.full(
@@ -65,19 +69,34 @@ def main():
             np.inf)
         action_2 = np.concatenate((action_2, action_2_n), axis=0)
 
-        transition_to_next_period(v, n)
-        new_production(v, n, action_1)
-        maintenance(v, n, action_2)
-        new_job(v, n)
+        # TODO is dit de goede aanpak? backwards...
+        # TODO check overrides
+        u_3 = transition_to_next_period(v[n - 1, :, :, :, :, :])
+        u_2 = new_production(u_3, n, action_1)
+        u_1 = maintenance(u_2, n, action_2)
+        v[n, :, :, :, :, :] = new_job(u_1)
 
         max_it = np.amax((v[n, :, :, :, :, :] - v[n - 1, :, :, :, :, :]))
         min_it = np.amin((v[n, :, :, :, :, :] - v[n - 1, :, :, :, :, :]))
         span = max_it - min_it
 
+        # if n == 6:
+        #     break
+
+    # print(v)
+    print(PROB_MATRIX_1.round(1))
+    print("###########")
+    print(max_it)
+    print("###########")
+    print(min_it)
+    print("###########")
     print(n)
-    print(v[n, :, 0, 0, 0, :])
-    print(action_1[n, :, 0, 0, 0, :])
-    print(action_2[n, :, 0, 0, 0, :])
+    print(v[n, :NUM_STATES, 0, 0, 0, :].round(1), '\n')
+    print("production \n", action_1[n, :NUM_STATES, 0, 0, 0, :], '\n')
+    print("maintenance \n", action_2[n, :NUM_STATES, 0, 0, 0, :], '\n')
+    # print(action_1[n, :NUM_STATES, 0, 0, 0, :]
+    #       + action_2[n, :NUM_STATES, 0, 0, 0, :])
+    # print(PROB_MATRIX_1[:NUM_STATES - 1, NUM_STATES - 1])
 
 
 if __name__ == "__main__":
