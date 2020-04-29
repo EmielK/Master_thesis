@@ -3,6 +3,7 @@ import numpy as np
 import seaborn as sns
 
 from MDP.constants import *
+from MDP.subiterations.flow_cost import flow_cost
 from MDP.subiterations.maintenance import maintenance
 from MDP.subiterations.new_job import new_job
 from MDP.subiterations.new_production import new_production
@@ -69,11 +70,10 @@ def main():
             np.inf)
         action_2 = np.concatenate((action_2, action_2_n), axis=0)
 
-        # TODO is dit de goede aanpak? backwards...
-        # TODO check overrides
         u_3 = transition_to_next_period(v[n - 1, :, :, :, :, :])
         u_2 = new_production(u_3, n, action_1)
-        u_1 = maintenance(u_2, n, action_2)
+        u_1 = maintenance(flow_cost(u_2), n, action_2)
+
         v[n, :, :, :, :, :] = new_job(u_1)
 
         max_it = np.amax((v[n, :, :, :, :, :] - v[n - 1, :, :, :, :, :]))
@@ -91,7 +91,7 @@ def main():
     print(min_it)
     print("###########")
     print(n)
-    print(v[n, :NUM_STATES, 0, 0, 0, :].round(1), '\n')
+    print(v[n, :NUM_STATES, 0, 0, 0, :].round(2), '\n')
     print("production \n", action_1[n, :NUM_STATES, 0, 0, 0, :], '\n')
     print("maintenance \n", action_2[n, :NUM_STATES, 0, 0, 0, :], '\n')
     # print(action_1[n, :NUM_STATES, 0, 0, 0, :]

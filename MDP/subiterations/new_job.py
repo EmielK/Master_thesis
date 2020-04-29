@@ -11,19 +11,19 @@ def new_job(v: np.ndarray) -> np.ndarray:
     u = v.copy()
 
     for index in range(STOCK_SIZE):
-        if index - 3 >= 0:
+        if index >= 3:
             u[:, :, :, :, index] = \
                 (1 - PROB_NEW_JOBS) * v[:, :, :, :, index] + \
                 PROB_NEW_JOBS * (PROB_1 * v[:, :, :, :, index - 1] +
                                  PROB_2 * v[:, :, :, :, index - 2] +
                                  PROB_3 * v[:, :, :, :, index - 3])
-        elif index - 2 >= 0:
+        elif index == 2:
             u[:, :, :, :, index] = \
                 (1 - PROB_NEW_JOBS) * v[:, :, :, :, index] + \
                 PROB_NEW_JOBS * (
                         PROB_1 * v[:, :, :, :, index - 1] +
                         (PROB_2 + PROB_3) * v[:, :, :, :, index - 2])
-        elif index - 1 >= 0:
+        elif index == 1:
             u[:, :, :, :, index] = \
                 (1 - PROB_NEW_JOBS) * v[:, :, :, :, index] + \
                 PROB_NEW_JOBS * v[:, :, :, :, index - 1]
