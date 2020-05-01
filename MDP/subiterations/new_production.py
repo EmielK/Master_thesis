@@ -32,10 +32,10 @@ def new_production(v: np.ndarray, n: int, action: np.ndarray) -> np.ndarray:
     action[n, :NUM_STATES - 1, 0, 0, 0, STOCK_SIZE - 1] = DN
 
     # print("new production", '\n', u[:NUM_STATES, 0, 0, 0, :].round(1), '\n')
-    print("option 1 '\n",
-          v[:NUM_STATES - 1, DN, DN, 0, :STOCK_SIZE - 1].round(1),
-          '\n')
-    print("option 2 '\n",
-          v[:NUM_STATES - 1, PROD_1, PROD_LEN_1, 0, :STOCK_SIZE - 1].round(1),
-          '\n')
+    # print("option 1 '\n",
+    #       v[:NUM_STATES - 1, DN, DN, 0, :STOCK_SIZE - 1].round(1),
+    #       '\n')
+    # print("option 2 '\n",
+    #       v[:NUM_STATES - 1, PROD_1, PROD_LEN_1, 0, :STOCK_SIZE - 1].round(1),
+    #       '\n')
     return u

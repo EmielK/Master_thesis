@@ -20,6 +20,8 @@ def maintenance(v: np.ndarray, n: int, action: np.ndarray) -> np.ndarray:
     When the system entered the failed state Y has been set to 0 in 
     transition_to_next_period.
     """
+    # Not for during production here, no in the case of failure during prod
+    # the state becomes u[NUM_STATES - 1, 0, 0, 0, :]
     u[NUM_STATES - 1, 0, 0, 0, :] = v[NUM_STATES - 1, 0, 0, T_CM, :] + C_CM
     action[n, NUM_STATES - 1, 0, 0, 0, :] = MAINTENANCE
 
@@ -38,6 +40,6 @@ def maintenance(v: np.ndarray, n: int, action: np.ndarray) -> np.ndarray:
                        v[state, 0, 0, T_PM, :] + C_PM],
                       axis=0)
 
-    print("maintenance", '\n', u[:NUM_STATES, 0, 0, 0, :].round(1), '\n')
+    # print("maintenance", '\n', u[:NUM_STATES, 0, 0, 0, :].round(1), '\n')
 
     return u

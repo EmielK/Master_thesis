@@ -45,12 +45,12 @@ def transition_to_next_period(v: np.ndarray) -> np.ndarray:
             # print(v[NUM_STATES - 1, 0, 0, 0, :STOCK_SIZE - 1])
             # TODO meerdere prob matrices toevoegen
             u[:NUM_STATES - 1, PROD_1, prod_time, 0, index] = \
-                PROB_MATRIX_1[:NUM_STATES - 1, index].dot(
+                PROB_MATRIX_1[:NUM_STATES - 1, :NUM_STATES - 1].dot(
                     v[:NUM_STATES - 1, PROD_1, prod_time - 1, 0, index])\
                 + \
                 PROB_MATRIX_1[:NUM_STATES - 1, NUM_STATES - 1].dot(
                     v[NUM_STATES - 1, 0, 0, 0, index])
-
+        # TODO ik zet niet meer de state meteen op 1 misschien nog doen?
         # If the product would finish in this transition period.
         # for index in range(STOCK_SIZE - 1):
         u[:NUM_STATES - 1, PROD_1, 1, 0, index] = \
@@ -59,6 +59,6 @@ def transition_to_next_period(v: np.ndarray) -> np.ndarray:
             PROB_MATRIX_1[:NUM_STATES - 1, NUM_STATES - 1].dot(
                 v[NUM_STATES - 1, 0, 0, 0, index])
 
-    print("transition to next period", '\n', u[:NUM_STATES, 0, 0, 0, :].round(1)
-          , '\n')
+    # print("transition to next period", '\n', u[:NUM_STATES, 0, 0, 0, :].round(1)
+    #       , '\n')
     return u
