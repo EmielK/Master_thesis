@@ -17,11 +17,11 @@ def new_job(v: np.ndarray) -> np.ndarray:
     for index in range(STOCK_SIZE):
         if index >= 3:
             # During maintenance
-            u[:, 0, 0, :, index] = \
-                (1 - PROB_NEW_JOBS) * v[:, 0, 0, :, index] + \
-                PROB_NEW_JOBS * (PROB_1 * v[:, 0, 0, :, index - 1] +
-                                 PROB_2 * v[:, 0, 0, :, index - 2] +
-                                 PROB_3 * v[:, 0, 0, :, index - 3])
+            u[0, 0, 0, :, index] = \
+                (1 - PROB_NEW_JOBS) * v[0, 0, 0, :, index] + \
+                PROB_NEW_JOBS * (PROB_1 * v[0, 0, 0, :, index - 1] +
+                                 PROB_2 * v[0, 0, 0, :, index - 2] +
+                                 PROB_3 * v[0, 0, 0, :, index - 3])
             # During prod setting 1
             u[:, 1, 1:, 0, index] = \
                 (1 - PROB_NEW_JOBS) * v[:, 1, 1:, 0, index] + \
@@ -30,10 +30,10 @@ def new_job(v: np.ndarray) -> np.ndarray:
                                  PROB_3 * v[:, 1, 1:, 0, index - 3])
         elif index == 2:
             # During maintenance
-            u[:, 0, 0, :, index] = \
-                (1 - PROB_NEW_JOBS) * v[:, 0, 0, :, index] + \
-                PROB_NEW_JOBS * (PROB_1 * v[:, 0, 0, :, index - 1] +
-                                 (PROB_2 + PROB_3) * v[:, 0, 0, :, index - 2])
+            u[0, 0, 0, :, index] = \
+                (1 - PROB_NEW_JOBS) * v[0, 0, 0, :, index] + \
+                PROB_NEW_JOBS * (PROB_1 * v[0, 0, 0, :, index - 1] +
+                                 (PROB_2 + PROB_3) * v[0, 0, 0, :, index - 2])
             # During prod setting 1
             u[:, 1, 1:, 0, index] = \
                 (1 - PROB_NEW_JOBS) * v[:, 1, 1:, 0, index] + \
@@ -41,16 +41,16 @@ def new_job(v: np.ndarray) -> np.ndarray:
                                  (PROB_2 + PROB_3) * v[:, 1, 1:, 0, index - 2])
         elif index == 1:
             # During maintenance
-            u[:, 0, 0, :, index] = \
-                (1 - PROB_NEW_JOBS) * v[:, 0, 0, :, index] + \
-                PROB_NEW_JOBS * v[:, 0, 0, :, index - 1]
+            u[0, 0, 0, :, index] = \
+                (1 - PROB_NEW_JOBS) * v[0, 0, 0, :, index] + \
+                PROB_NEW_JOBS * v[0, 0, 0, :, index - 1]
             # During prod setting 1
             u[:, 1, 1:, 0, index] = \
                 (1 - PROB_NEW_JOBS) * v[:, 1, 1:, 0, index] + \
                 PROB_NEW_JOBS * v[:, 1, 1:, 0, index - 1]
         elif index == 0:
             # During maintenance
-            u[:, 0, 0, :, index] = v[:, 0, 0, :, index]
+            u[0, 0, 0, :, index] = v[0, 0, 0, :, index]
             # During prod setting 1
             u[:, 1, 1:, 0, index] = v[:, 1, 1:, 0, index]
 

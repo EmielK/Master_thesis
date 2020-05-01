@@ -27,11 +27,11 @@ def transition_to_next_period(v: np.ndarray) -> np.ndarray:
         #         v[0, 0, 0, maint_time - 1, index] + cost_flow
 
     for maint_time in range(2, MAX_MAIN_TIME):
-        u[:, 0, 0, maint_time, :] = \
-            v[:, 0, 0, maint_time - 1, :]
+        u[0, 0, 0, maint_time, :] = \
+            v[0, 0, 0, maint_time - 1, :]
 
     # Upon finishing with maintenance set state to as good as new i.e. 0.
-    u[:, 0, 0, 1, :] = v[0, 0, 0, 0, :]
+    u[0, 0, 0, 1, :] = v[0, 0, 0, 0, :]
 
     # Continue production with the same setting if the product does not
     # finish in this transition period and does not reach a failed state

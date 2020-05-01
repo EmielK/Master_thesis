@@ -3,7 +3,7 @@ import numpy as np
 from ..constants import *
 
 
-def maintenance(v: np.ndarray, n: int, action: np.ndarray) -> np.ndarray:
+def maintenance(v: np.ndarray, action: np.ndarray) -> np.ndarray:
     """
     Adds the costs of maintenance.
     If the system is in the failed state maintenance is mandatory and
@@ -22,8 +22,8 @@ def maintenance(v: np.ndarray, n: int, action: np.ndarray) -> np.ndarray:
     """
     # Not for during production here, no in the case of failure during prod
     # the state becomes u[NUM_STATES - 1, 0, 0, 0, :]
-    u[NUM_STATES - 1, 0, 0, 0, :] = v[NUM_STATES - 1, 0, 0, T_CM, :] + C_CM
-    action[n, NUM_STATES - 1, 0, 0, 0, :] = MAINTENANCE
+    u[NUM_STATES - 1, 0, 0, 0, :] = v[0, 0, 0, T_CM, :] + C_CM
+    action[NUM_STATES - 1, 0, 0, 0, :] = MAINTENANCE
 
     """
     If there is no ongoing maintenance or production, so Y = T = L = 0, choose
@@ -33,11 +33,11 @@ def maintenance(v: np.ndarray, n: int, action: np.ndarray) -> np.ndarray:
     for state in range(NUM_STATES - 1):
         u[state, 0, 0, 0, :] = \
             np.minimum(v[state, 0, 0, 0, :],
-                       v[state, 0, 0, T_PM, :] + C_PM)
+                       v[0, 0, 0, T_PM, :] + C_PM)
 
-        action[n, state, 0, 0, 0, :] = \
+        action[state, 0, 0, 0, :] = \
             np.argmin([v[state, 0, 0, 0, :],
-                       v[state, 0, 0, T_PM, :] + C_PM],
+                       v[0, 0, 0, T_PM, :] + C_PM],
                       axis=0)
 
     # print("maintenance", '\n', u[:NUM_STATES, 0, 0, 0, :].round(1), '\n')
