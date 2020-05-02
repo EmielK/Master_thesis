@@ -4,7 +4,7 @@ import seaborn as sns
 import scipy.integrate as integrate
 from scipy.stats import gamma
 
-from MDP.constants import *
+from MDP.constants import NUM_STATES, STOCK_SIZE
 
 
 def graph(actions_1: np.ndarray, actions_2: np.ndarray):
@@ -18,10 +18,10 @@ def graph(actions_1: np.ndarray, actions_2: np.ndarray):
 
     solution = actions
 
-    # extra_column = np.zeros((NUM_STATES + 1, 1))
-    # extra_row = np.zeros((1, NUM_STATES + 2))
-    # solution = np.column_stack((extra_column, solution))
-    # solution = np.row_stack((extra_row, solution))
+    extra_column = np.zeros((NUM_STATES + 1, 1))
+    extra_row = np.zeros((1, STOCK_SIZE))
+    solution = np.column_stack((extra_column, solution))
+    solution = np.row_stack((extra_row, solution))
 
     ax = sns.heatmap(solution, square=True, linecolor='Black', cbar=False,
                      linewidths=0.1, cmap="Greys")

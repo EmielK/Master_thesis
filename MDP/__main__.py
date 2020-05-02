@@ -1,7 +1,7 @@
 import numpy as np
 
 from MDP.constants import *
-from MDP.functions import graph
+from MDP.graph import graph
 from MDP.subiterations.flow_cost import flow_cost
 from MDP.subiterations.maintenance import maintenance
 from MDP.subiterations.new_job import new_job
@@ -60,6 +60,11 @@ def main():
         min_it = np.amin((v[n, :, :, :, :, :] - v[n - 1, :, :, :, :, :]))
         span = max_it - min_it
 
+        if n == 50:
+            break
+
+        # print(span)
+
     print(PROB_MATRIX_1.round(1))
     print("###########")
     print(max_it)
@@ -74,8 +79,9 @@ def main():
     print(v[n, :NUM_STATES, 0, 0, 0, :].round(2), '\n')
     print("production \n", action_prod[:NUM_STATES, 0, 0, 0, :], '\n')
     print("maintenance \n", action_maint[:NUM_STATES, 0, 0, 0, :], '\n')
-    graph(action_maint[:NUM_STATES, 0, 0, 0, :],
-          action_prod[:NUM_STATES, 0, 0, 0, :])
+
+    # graph(action_prod[:NUM_STATES, 0, 0, 0, :],
+    #       action_maint[:NUM_STATES, 0, 0, 0, :])
 
 
 if __name__ == "__main__":

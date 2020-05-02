@@ -2,11 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c726bab-2b71-4f18-b204-1c633b1bdc39" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/MDP/functions/graph.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDP/DecisionMatrix.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/MDP/DecisionMatrix.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDP/Iteration.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/MDP/__main__.py" beforeDir="false" afterPath="$PROJECT_DIR$/MDP/__main__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDP/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/MDP/constants.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MDP/functions/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/MDP/functions/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDP/functions/graph.py" beforeDir="false" afterPath="$PROJECT_DIR$/MDP/graph.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MDP/subiterations/maintenance.py" beforeDir="false" afterPath="$PROJECT_DIR$/MDP/subiterations/maintenance.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDP/subiterations/new_job.py" beforeDir="false" afterPath="$PROJECT_DIR$/MDP/subiterations/new_job.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +42,9 @@
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\emiel\OneDrive\Documenten\Master Thesis\Code\Master_thesis\MDP" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\emiel\OneDrive\Documenten\Master Thesis\Python\MDP\Classes" />
     </key>
@@ -108,7 +115,7 @@
       <workItem from="1587647762657" duration="4718000" />
       <workItem from="1587654391530" duration="892000" />
       <workItem from="1587720314838" duration="25294000" />
-      <workItem from="1588147530069" duration="30398000" />
+      <workItem from="1588147530069" duration="33723000" />
     </task>
     <servers />
   </component>
@@ -136,22 +143,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1587466123922" />
-    <state width="1493" height="235" key="GridCell.Tab.0.bottom" timestamp="1588350992113">
+    <state width="1493" height="235" key="GridCell.Tab.0.bottom" timestamp="1588409807810">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="235" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1588350992113" />
-    <state width="1493" height="235" key="GridCell.Tab.0.center" timestamp="1588350992113">
+    <state width="1493" height="235" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1588409807810" />
+    <state width="1493" height="235" key="GridCell.Tab.0.center" timestamp="1588409807810">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="235" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1588350992113" />
-    <state width="1493" height="235" key="GridCell.Tab.0.left" timestamp="1588350992113">
+    <state width="1493" height="235" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1588409807810" />
+    <state width="1493" height="235" key="GridCell.Tab.0.left" timestamp="1588409807810">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="235" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1588350992113" />
-    <state width="1493" height="235" key="GridCell.Tab.0.right" timestamp="1588350992113">
+    <state width="1493" height="235" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1588409807810" />
+    <state width="1493" height="235" key="GridCell.Tab.0.right" timestamp="1588409807810">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="235" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1588350992113" />
+    <state width="1493" height="235" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1588409807810" />
     <state x="438" y="40" key="SettingsEditor" timestamp="1588148087160">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -164,10 +171,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1587720349717" />
-    <state x="510" y="56" key="refactoring.ChangeSignatureDialog" timestamp="1587720895068">
+    <state x="510" y="56" key="refactoring.ChangeSignatureDialog" timestamp="1588407614928">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="510" y="56" key="refactoring.ChangeSignatureDialog/0.0.1536.824@0.0.1536.824" timestamp="1587720895068" />
+    <state x="510" y="56" key="refactoring.ChangeSignatureDialog/0.0.1536.824@0.0.1536.824" timestamp="1588407614928" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1587648296272">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -175,7 +182,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Python$value_iteration_algorithm.coverage" NAME="value_iteration_algorithm Coverage Results" MODIFIED="1587470849551" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/MDP" />
-    <SUITE FILE_PATH="coverage/Master_thesis$__main__.coverage" NAME="__main__ Coverage Results" MODIFIED="1588350992107" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/MDP" />
+    <SUITE FILE_PATH="coverage/Master_thesis$__main__.coverage" NAME="__main__ Coverage Results" MODIFIED="1588409807805" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/MDP" />
     <SUITE FILE_PATH="coverage/Python$__main__.coverage" NAME="__main__ Coverage Results" MODIFIED="1587652408819" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/MDP" />
   </component>
 </project>

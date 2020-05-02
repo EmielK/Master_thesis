@@ -23,7 +23,7 @@ def maintenance(v: np.ndarray, action: np.ndarray) -> np.ndarray:
     # Not for during production here, no in the case of failure during prod
     # the state becomes u[NUM_STATES - 1, 0, 0, 0, :]
     u[NUM_STATES - 1, 0, 0, 0, :] = v[0, 0, 0, T_CM, :] + C_CM
-    action[NUM_STATES - 1, 0, 0, 0, :] = MAINTENANCE * 10
+    action[NUM_STATES - 1, 0, 0, 0, :] = MAINTENANCE
 
     """
     If there is no ongoing maintenance or production, so Y = T = L = 0, choose
@@ -38,7 +38,7 @@ def maintenance(v: np.ndarray, action: np.ndarray) -> np.ndarray:
         action[state, 0, 0, 0, :] = \
             np.argmin([v[state, 0, 0, 0, :],
                        v[0, 0, 0, T_PM, :] + C_PM],
-                      axis=0) * 10
+                      axis=0)
 
     # print("maintenance", '\n', u[:NUM_STATES, 0, 0, 0, :].round(1), '\n')
 

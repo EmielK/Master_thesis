@@ -6,6 +6,8 @@ BACK_ORDER_COSTS = 2
 C_PM = 15
 C_CM = 30
 
+COST_MISSED_ORDER = 5
+
 T_PM = 1
 T_CM = 3
 
