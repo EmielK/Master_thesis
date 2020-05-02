@@ -10,16 +10,15 @@ from MDP.constants import NUM_STATES, STOCK_SIZE
 def graph(actions_1: np.ndarray, actions_2: np.ndarray):
     """
     heatmap x coordinates start at 0 so an extra row and column are added and
-    left out in the figure. The graph works for nr_units = 2 only
+    left out in the figure.
     """
-    # TODO Good as new state 0 should be 1 in paper.
     # TODO better difference between maintenance and production.
-    actions = actions_1 + actions_2
+    actions = actions_1 + actions_2 * 2
 
     solution = actions
 
-    extra_column = np.zeros((NUM_STATES + 1, 1))
-    extra_row = np.zeros((1, STOCK_SIZE))
+    extra_column = np.zeros((NUM_STATES, 1))
+    extra_row = np.zeros((1, STOCK_SIZE + 1))
     solution = np.column_stack((extra_column, solution))
     solution = np.row_stack((extra_row, solution))
 
@@ -35,7 +34,7 @@ def graph(actions_1: np.ndarray, actions_2: np.ndarray):
     plt.ylabel("State")
     ax.xaxis.tick_top()  # x axis on top
     ax.xaxis.set_label_position('top')
-    plt.xlim(0, 12)
-    plt.ylim(12, 0)
+    plt.xlim(1, 12)
+    plt.ylim(12, 1)
     plt.savefig('DecisionMatrix.pdf')
     plt.show()

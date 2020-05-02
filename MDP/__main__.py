@@ -63,7 +63,7 @@ def main():
         if n == 50:
             break
 
-        # print(span)
+        print(span)
 
     print(PROB_MATRIX_1.round(1))
     print("###########")
