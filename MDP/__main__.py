@@ -60,7 +60,7 @@ def main():
         min_it = np.amin((v[n, :, :, :, :, :] - v[n - 1, :, :, :, :, :]))
         span = max_it - min_it
 
-        if n == 200:
+        if n == 500:
             break
 
         print(span)
