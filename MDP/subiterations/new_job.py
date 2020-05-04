@@ -10,10 +10,6 @@ def new_job(v: np.ndarray) -> np.ndarray:
     """
     u = v.copy()
 
-    # During maintenance
-    # u[:, 0, 0, :, index]
-    # During production setting 1, take care to account for correct length
-    # u[:, 1, 0:, 0, index]
     for index in range(STOCK_SIZE):
         if index >= 3:
             # During maintenance
@@ -28,6 +24,12 @@ def new_job(v: np.ndarray) -> np.ndarray:
                 PROB_NEW_JOBS * (PROB_1 * v[:, 1, 1:, 0, index - 1] +
                                  PROB_2 * v[:, 1, 1:, 0, index - 2] +
                                  PROB_3 * v[:, 1, 1:, 0, index - 3])
+            # During prod setting 2
+            u[:, 2, 1, 0, index] = \
+                (1 - PROB_NEW_JOBS) * v[:, 2, 1, 0, index] + \
+                PROB_NEW_JOBS * (PROB_1 * v[:, 2, 1, 0, index - 1] +
+                                 PROB_2 * v[:, 2, 1, 0, index - 2] +
+                                 PROB_3 * v[:, 2, 1, 0, index - 3])
             # When neither production or maintenance is ongoing.
             u[:, 0, 0, 0, index] = \
                 (1 - PROB_NEW_JOBS) * v[:, 0, 0, 0, index] + \
@@ -48,6 +50,13 @@ def new_job(v: np.ndarray) -> np.ndarray:
                 PROB_NEW_JOBS * (PROB_1 * v[:, 1, 1:, 0, index - 1] +
                                  PROB_2 * v[:, 1, 1:, 0, index - 2] +
                                  PROB_3 * (v[:, 1, 1:, 0, index - 2] +
+                                           COST_MISSED_ORDER))
+            # During prod setting 2
+            u[:, 2, 1, 0, index] = \
+                (1 - PROB_NEW_JOBS) * v[:, 2, 1, 0, index] + \
+                PROB_NEW_JOBS * (PROB_1 * v[:, 2, 1, 0, index - 1] +
+                                 PROB_2 * v[:, 2, 1, 0, index - 2] +
+                                 PROB_3 * (v[:, 2, 1, 0, index - 2] +
                                            COST_MISSED_ORDER))
             # When neither production or maintenance is ongoing.
             u[:, 0, 0, 0, index] = \
@@ -74,7 +83,14 @@ def new_job(v: np.ndarray) -> np.ndarray:
                                            COST_MISSED_ORDER) +
                                  PROB_3 * (v[:, 1, 1:, 0, index - 1] +
                                            2 * COST_MISSED_ORDER))
-
+            # During prod setting 2
+            u[:, 2, 1, 0, index] = \
+                (1 - PROB_NEW_JOBS) * v[:, 2, 1, 0, index] + \
+                PROB_NEW_JOBS * (PROB_1 * v[:, 2, 1, 0, index - 1] +
+                                 PROB_2 * (v[:, 2, 1, 0, index - 1] +
+                                           COST_MISSED_ORDER) +
+                                 PROB_3 * (v[:, 2, 1, 0, index - 1] +
+                                           2 * COST_MISSED_ORDER))
             # When neither production or maintenance is ongoing.
             u[:, 0, 0, 0, index] = \
                 (1 - PROB_NEW_JOBS) * v[:, 0, 0, 0, index] + \
@@ -102,6 +118,15 @@ def new_job(v: np.ndarray) -> np.ndarray:
                                  PROB_2 * (v[:, 1, 1:, 0, index] +
                                            2 * COST_MISSED_ORDER) +
                                  PROB_3 * (v[:, 1, 1:, 0, index] +
+                                           3 * COST_MISSED_ORDER))
+            # During prod setting 2
+            u[:, 2, 1, 0, index] = \
+                (1 - PROB_NEW_JOBS) * v[:, 2, 1, 0, index] + \
+                PROB_NEW_JOBS * (PROB_1 * (v[:, 2, 1, 0, index] +
+                                           COST_MISSED_ORDER) +
+                                 PROB_2 * (v[:, 2, 1, 0, index] +
+                                           2 * COST_MISSED_ORDER) +
+                                 PROB_3 * (v[:, 2, 1, 0, index] +
                                            3 * COST_MISSED_ORDER))
             # When neither production or maintenance is ongoing.
             u[:, 0, 0, 0, index] = \

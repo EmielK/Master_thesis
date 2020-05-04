@@ -9,6 +9,10 @@ def new_production(v: np.ndarray, action: np.ndarray) -> np.ndarray:
     cycle or not and assigns this value this value to the value array.
     """
     u = v.copy()
+    print("after copy v'\n",
+          u[0, PROD_2, PROD_LEN_2, 0, :STOCK_SIZE - 1].round(1))
+    print("after copy u'\n",
+          u[0, PROD_2, PROD_LEN_2, 0, :STOCK_SIZE - 1].round(1))
 
     """
     Select cheapest option, where the options are doing nothing or starting a 
@@ -17,12 +21,15 @@ def new_production(v: np.ndarray, action: np.ndarray) -> np.ndarray:
     stock is at capacity.
     """
     u[:NUM_STATES - 1, 0, 0, 0, :STOCK_SIZE - 1] = \
-        np.minimum(v[:NUM_STATES - 1, DN, DN, 0, :STOCK_SIZE - 1],
-                   v[:NUM_STATES - 1, PROD_1, PROD_LEN_1, 0, :STOCK_SIZE - 1])
+        np.minimum.reduce(
+            [v[:NUM_STATES - 1, DN, DN, 0, :STOCK_SIZE - 1],
+             v[:NUM_STATES - 1, PROD_1, PROD_LEN_1, 0, :STOCK_SIZE - 1],
+             v[:NUM_STATES - 1, PROD_2, PROD_LEN_2, 0, :STOCK_SIZE - 1]])
 
     action[:NUM_STATES - 1, 0, 0, 0, :STOCK_SIZE - 1] = \
         np.argmin([v[:NUM_STATES - 1, DN, DN, 0, :STOCK_SIZE - 1],
-                   v[:NUM_STATES - 1, PROD_1, PROD_LEN_1, 0, :STOCK_SIZE - 1]],
+                   v[:NUM_STATES - 1, PROD_1, PROD_LEN_1, 0, :STOCK_SIZE - 1],
+                   v[:NUM_STATES - 1, PROD_2, PROD_LEN_2, 0, :STOCK_SIZE - 1]],
                   axis=0)
 
     """
@@ -31,11 +38,6 @@ def new_production(v: np.ndarray, action: np.ndarray) -> np.ndarray:
     action[NUM_STATES - 1, 0, 0, 0, :STOCK_SIZE] = DN
     action[:NUM_STATES - 1, 0, 0, 0, STOCK_SIZE - 1] = DN
 
-    # print("new production", '\n', u[:NUM_STATES, 0, 0, 0, :].round(1), '\n')
-    # print("option 1 '\n",
-    #       v[:NUM_STATES - 1, DN, DN, 0, :STOCK_SIZE - 1].round(1),
-    #       '\n')
-    # print("option 2 '\n",
-    #       v[:NUM_STATES - 1, PROD_1, PROD_LEN_1, 0, :STOCK_SIZE - 1].round(1),
-    #       '\n')
+    print("new production", '\n', u[:NUM_STATES, 0, 0, 0, :].round(1), '\n')
+
     return u

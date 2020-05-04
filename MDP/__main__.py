@@ -60,12 +60,12 @@ def main():
         min_it = np.amin((v[n, :, :, :, :, :] - v[n - 1, :, :, :, :, :]))
         span = max_it - min_it
 
-        if n == 50:
+        if n == 200:
             break
 
         print(span)
 
-    print(PROB_MATRIX_1.round(1))
+    # print(PROB_MATRIX_1.round(1))
     print("###########")
     print(max_it)
     print("###########")
@@ -77,6 +77,8 @@ def main():
     # for this.
     print("production \n", action_prod[:NUM_STATES, 0, 0, 0, :], '\n')
     print(v[n, :NUM_STATES, 0, 0, 0, :].round(2), '\n')
+    # print(v[n, :NUM_STATES, 0, 0, 0, :].round(2) -
+    #       v[n - 1, :NUM_STATES, 0, 0, 0, :].round(2), '\n')
     print("production \n", action_prod[:NUM_STATES, 0, 0, 0, :], '\n')
     print("maintenance \n", action_maint[:NUM_STATES, 0, 0, 0, :], '\n')
 
@@ -85,4 +87,6 @@ def main():
 
 
 if __name__ == "__main__":
+    # print(PROB_MATRIX_1.round(2))
+    # print(PROB_MATRIX_2.round(2))
     main()

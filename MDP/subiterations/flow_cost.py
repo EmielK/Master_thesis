@@ -20,6 +20,8 @@ def flow_cost(v: np.ndarray) -> np.ndarray:
         u[0, 0, 0, 1:, index] += cost_flow
         # During production setting 1, take care to account for correct length
         u[:NUM_STATES - 1, 1, 1:, 0, index] += cost_flow
+        # During production setting 2
+        u[:NUM_STATES - 1, 2, 1, 0, index] += cost_flow
         # When neither production or maintenance is ongoing.
         u[:, 0, 0, 0, index] += cost_flow
         # print("During production \n", u[:, 1, 0, :, 2].round(2), '\n')
