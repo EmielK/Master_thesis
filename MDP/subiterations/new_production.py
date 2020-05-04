@@ -9,10 +9,6 @@ def new_production(v: np.ndarray, action: np.ndarray) -> np.ndarray:
     cycle or not and assigns this value this value to the value array.
     """
     u = v.copy()
-    print("after copy v'\n",
-          u[0, PROD_2, PROD_LEN_2, 0, :STOCK_SIZE - 1].round(1))
-    print("after copy u'\n",
-          u[0, PROD_2, PROD_LEN_2, 0, :STOCK_SIZE - 1].round(1))
 
     """
     Select cheapest option, where the options are doing nothing or starting a 

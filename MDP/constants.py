@@ -1,7 +1,7 @@
 from .functions.TPM_gammaprocess import TPM_gammaprocess
 
-STORAGE_COSTS = 0
-BACK_ORDER_COSTS = 0.25
+STORAGE_COSTS = 0.25
+BACK_ORDER_COSTS = 0.1
 
 C_PM = 10
 C_CM = 30
@@ -11,10 +11,10 @@ COST_MISSED_ORDER = 4
 T_PM = 1
 T_CM = 3
 
-MAX_BACK_ORDER = 4
-MAX_STORAGE = 4
+MAX_BACK_ORDER = 5
+MAX_STORAGE = 5
 
-NUM_STATES = 20
+NUM_STATES = 10
 # No production, 1, and 2.
 PROD_SETTINGS = 3
 

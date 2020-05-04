@@ -60,7 +60,7 @@ def main():
         min_it = np.amin((v[n, :, :, :, :, :] - v[n - 1, :, :, :, :, :]))
         span = max_it - min_it
 
-        if n == 500:
+        if n == 50:
             break
 
         print(span)
@@ -75,7 +75,7 @@ def main():
     # If maintenance is the optimal action this overrides production if
     # production was the optimal action in the step prior so we must correct
     # for this.
-    print("production \n", action_prod[:NUM_STATES, 0, 0, 0, :], '\n')
+    # print("production \n", action_prod[:NUM_STATES, 0, 0, 0, :], '\n')
     print(v[n, :NUM_STATES, 0, 0, 0, :].round(2), '\n')
     # print(v[n, :NUM_STATES, 0, 0, 0, :].round(2) -
     #       v[n - 1, :NUM_STATES, 0, 0, 0, :].round(2), '\n')
