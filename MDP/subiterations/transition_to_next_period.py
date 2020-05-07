@@ -22,28 +22,27 @@ def transition_to_next_period(v: np.ndarray) -> np.ndarray:
     # finish in this transition period and does not reach a failed state
     # plus value times the probability that the system does reach the
     # failed state.
-    for index in range(STOCK_SIZE - 1):
+    for index in range(TOTAL_SIZE - 1):
         for prod_time in range(2, MAX_PROD_TIME):
-            u[:NUM_STATES - 1, PROD_1, prod_time, 0, index] = \
-                PROB_MATRIX_1[:NUM_STATES - 1, :NUM_STATES - 1].dot(
-                    v[:NUM_STATES - 1, PROD_1, prod_time - 1, 0, index])\
+            u[:NUM_STATES, PROD_1, prod_time, 0, index] = \
+                PROB_MATRIX_1[:NUM_STATES, :NUM_STATES].dot(
+                    v[:NUM_STATES, PROD_1, prod_time - 1, 0, index])\
                 + \
-                PROB_MATRIX_1[:NUM_STATES - 1, NUM_STATES - 1].dot(
-                    v[NUM_STATES - 1, 0, 0, 0, index])
+                PROB_MATRIX_1[:NUM_STATES, NUM_STATES].dot(
+                    v[NUM_STATES, 0, 0, 0, index])
         # If the product would finish in this transition period.
-        u[:NUM_STATES - 1, PROD_1, 1, 0, index] = \
-            PROB_MATRIX_1[:NUM_STATES - 1, :NUM_STATES - 1].dot(
-                v[:NUM_STATES - 1, 0, 0, 0, index + 1]) + \
-            PROB_MATRIX_1[:NUM_STATES - 1, NUM_STATES - 1].dot(
-                v[NUM_STATES - 1, 0, 0, 0, index])
+        u[:NUM_STATES, PROD_1, 1, 0, index] = \
+            PROB_MATRIX_1[:NUM_STATES, :NUM_STATES].dot(
+                v[:NUM_STATES, 0, 0, 0, index + 1]) + \
+            PROB_MATRIX_1[:NUM_STATES, NUM_STATES].dot(
+                v[NUM_STATES, 0, 0, 0, index])
         # For setting 2 product would always finish in this transition period.
-        u[:NUM_STATES - 1, PROD_2, 1, 0, index] = \
-            PROB_MATRIX_2[:NUM_STATES - 1, :NUM_STATES - 1].dot(
-                v[:NUM_STATES - 1, 0, 0, 0, index + 1]) + \
-            PROB_MATRIX_2[:NUM_STATES - 1, NUM_STATES - 1].dot(
-                v[NUM_STATES - 1, 0, 0, 0, index])
+        u[:NUM_STATES, PROD_2, 1, 0, index] = \
+            PROB_MATRIX_2[:NUM_STATES, :NUM_STATES].dot(
+                v[:NUM_STATES, 0, 0, 0, index + 1]) + \
+            PROB_MATRIX_2[:NUM_STATES, NUM_STATES].dot(
+                v[NUM_STATES, 0, 0, 0, index])
     # print("1\n", u[:NUM_STATES - 1, PROD_1, 2, 0, :STOCK_SIZE - 1].round(1))
     # print("2\n", u[0, PROD_2, PROD_LEN_2, 0, :STOCK_SIZE - 1].round(1))
-    # print("transition to next period", '\n', u[:NUM_STATES, 0, 0, 0, :].round(1)
-    #       , '\n')
+
     return u

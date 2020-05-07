@@ -4,7 +4,7 @@ import seaborn as sns
 import scipy.integrate as integrate
 from scipy.stats import gamma
 
-from MDP.constants import NUM_STATES, STOCK_SIZE
+from MDP.constants import NUM_STATES, TOTAL_SIZE
 
 
 def graph(actions_1: np.ndarray, actions_2: np.ndarray):
@@ -18,7 +18,7 @@ def graph(actions_1: np.ndarray, actions_2: np.ndarray):
     solution = actions
 
     extra_column = np.zeros((NUM_STATES, 1))
-    extra_row = np.zeros((1, STOCK_SIZE + 1))
+    extra_row = np.zeros((1, TOTAL_SIZE + 1))
     solution = np.column_stack((extra_column, solution))
     solution = np.row_stack((extra_row, solution))
 
