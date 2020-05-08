@@ -1,7 +1,7 @@
 from .functions.TPM_gammaprocess import TPM_gammaprocess
 
 STORAGE_COSTS = 0
-BACK_ORDER_COSTS = 0.1
+BACK_ORDER_COSTS = 0.01
 
 C_PM = 0.4
 C_CM = 1

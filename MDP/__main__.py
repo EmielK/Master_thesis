@@ -4,7 +4,6 @@ from MDP.constants import *
 from MDP.graph import graph
 from MDP.subiterations.flow_cost import flow_cost
 from MDP.subiterations.maintenance import maintenance
-from MDP.subiterations.new_job import new_job
 from MDP.subiterations.new_job_arrival import new_job_arrival
 from MDP.subiterations.new_production import new_production
 from MDP.subiterations.transition_to_next_period import \
@@ -58,12 +57,13 @@ def main():
         u_flow = flow_cost(u_2)
         u_1 = maintenance(u_flow, action_maint)
         v[n, :, :, :, :, :] = new_job_arrival(u_1)
+
         # print("transition to next period", '\n',
         #       u_3[:NUM_STATES + 1, 0, 0, 0, :].round(1))
         # print("new production", '\n', u_2[:NUM_STATES + 1, 0, 0, 0, :].round(1))
         # print("flow_cost", '\n', u_flow[:NUM_STATES + 1, 0, 0, 0, :].round(1))
         # print("maintenance", '\n', u_1[:NUM_STATES + 1, 0, 0, 0, :].round(1), '\n')
-        # print("v \n ", v[n, :, 0, 0, 0, :].round(2), '\n')
+        # print("new_job \n ", v[n, :, 0, 0, 0, :].round(2), '\n')
         # print(v[n, :NUM_STATES + 1, 0, 0, 0, :].round(2) -
         #       v[n - 1, :NUM_STATES + 1, 0, 0, 0, :].round(2), '\n')
 

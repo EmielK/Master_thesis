@@ -8,7 +8,30 @@ def new_production(v: np.ndarray, action: np.ndarray) -> np.ndarray:
     Computes the optimal choice regarding whether to start a new production
     cycle or not and assigns this value this value to the value array.
     """
-    u = v.copy()
+
+    u = np.full(
+        (NUM_STATES + 1,
+         PROD_SETTINGS,
+         MAX_PROD_TIME,
+         MAX_MAIN_TIME,
+         TOTAL_SIZE),
+        np.NaN,
+        dtype="float")
+
+    # During maintenance:
+    u[0, 0, 0, 1:, :] = v[0, 0, 0, 1:, :]
+
+    # If production is still ongoing:
+    u[:, PROD_1, 1, 0, :] = v[:, PROD_1, 1, 0, :]
+
+    # If in the failed state or if the stock is at capacity do nothing.
+    # failed state cannot actually occur here.
+    # u[NUM_STATES, 0, 0, 0, :TOTAL_SIZE] = v[NUM_STATES, 0, 0, 0, :TOTAL_SIZE]
+    action[NUM_STATES, 0, 0, 0, :TOTAL_SIZE] = DN
+
+    u[:NUM_STATES, 0, 0, 0, TOTAL_SIZE - 1] =\
+        v[:NUM_STATES, 0, 0, 0, TOTAL_SIZE - 1]
+    action[:NUM_STATES, 0, 0, 0, TOTAL_SIZE - 1] = DN
 
     """
     Select cheapest option, where the options are doing nothing or starting a 
@@ -31,11 +54,5 @@ def new_production(v: np.ndarray, action: np.ndarray) -> np.ndarray:
                    v[:NUM_STATES, PROD_1, PROD_LEN_1, 0, :TOTAL_SIZE - 1],
                    v[:NUM_STATES, PROD_2, PROD_LEN_2, 0, :TOTAL_SIZE - 1]],
                   axis=0)
-
-    """
-    If in the failed state or if the stock is at capacity do nothing.
-    """
-    action[NUM_STATES, 0, 0, 0, :TOTAL_SIZE] = DN
-    action[:NUM_STATES, 0, 0, 0, TOTAL_SIZE - 1] = DN
 
     return u

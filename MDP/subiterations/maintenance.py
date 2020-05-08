@@ -11,7 +11,14 @@ def maintenance(v: np.ndarray, action: np.ndarray) -> np.ndarray:
     ongoing maintenance or production the cost minimizing option, maintenance
     versus doing nothing, is computed and selected.
     """
-    u = v.copy()
+    u = np.full(
+        (NUM_STATES + 1,
+         PROD_SETTINGS,
+         MAX_PROD_TIME,
+         MAX_MAIN_TIME,
+         TOTAL_SIZE),
+        np.NaN,
+        dtype="float")
 
     """
     If the system is in the failed state maintenance is required. After 
@@ -20,8 +27,14 @@ def maintenance(v: np.ndarray, action: np.ndarray) -> np.ndarray:
     When the system entered the failed state Y has been set to 0 in 
     transition_to_next_period.
     """
-    # Not for during production here, no in the case of failure during prod
-    # the state becomes u[NUM_STATES - 1, 0, 0, 0, :]
+    # During maintenance:
+    u[0, 0, 0, 1:, :] = v[0, 0, 0, 1:, :]
+
+    # During production:
+    u[:NUM_STATES, PROD_1, 1:, 0, :] = v[:NUM_STATES, PROD_1, 1:, 0, :]
+    u[:NUM_STATES, PROD_2, 1, 0, :] = v[:NUM_STATES, PROD_2, 1, 0, :]
+
+    # If in failed state
     u[NUM_STATES, 0, 0, 0, :] = v[0, 0, 0, T_CM, :] + C_CM
     action[NUM_STATES, 0, 0, 0, :] = MAINTENANCE
 
@@ -39,5 +52,5 @@ def maintenance(v: np.ndarray, action: np.ndarray) -> np.ndarray:
             np.argmin([v[state, 0, 0, 0, :],
                        v[0, 0, 0, T_PM, :] + C_PM],
                       axis=0)
-
+    # print("#", u[0, 0, 0, :, :])
     return u
