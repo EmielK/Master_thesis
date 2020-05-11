@@ -1,6 +1,6 @@
 from .functions.TPM_gammaprocess import TPM_gammaprocess
 
-STORAGE_COSTS = 0
+STORAGE_COSTS = 0.001
 BACK_ORDER_COSTS = 0.01
 
 C_PM = 0.4
@@ -12,9 +12,9 @@ T_PM = 1
 T_CM = 3
 
 MAX_BACK_ORDER = 15
-MAX_STORAGE = 5
+MAX_STORAGE = 15
 
-NUM_STATES = 9
+NUM_STATES = 3
 # No production, 1, and 2.
 PROD_SETTINGS = 3
 
@@ -33,7 +33,7 @@ TOTAL_SIZE = MAX_BACK_ORDER + MAX_STORAGE + 1
 DN = 0
 MAINTENANCE = 1
 
-PROB_NEW_JOBS = 0.1
+PROB_NEW_JOBS = 0.3
 MAX_NUM_NEW_JOBS = 3
 PROB_1 = 0.5
 PROB_2 = 0.35
@@ -41,3 +41,4 @@ PROB_3 = 0.15
 
 # arbitrary large number
 M = 10000
+EPSILON = 0.00001

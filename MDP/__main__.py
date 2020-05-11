@@ -35,10 +35,9 @@ def main():
          TOTAL_SIZE),
         np.inf)
 
-    epsilon = 0.001
-    span = 2 * epsilon
+    span = 2 * EPSILON
 
-    while span > epsilon:
+    while span > EPSILON:
         n += 1
 
         v_n = np.full(
@@ -71,8 +70,8 @@ def main():
         min_it = np.nanmin((v[n, :, :, :, :, :] - v[n - 1, :, :, :, :, :]))
         span = max_it - min_it
 
-        if n == 100:
-            break
+        # if n == 100:
+        #     break
 
         # print("min: ", min_it)
         # print("max: ", max_it)
@@ -95,8 +94,8 @@ def main():
     print("production \n", action_prod[:NUM_STATES + 1, 0, 0, 0, :], '\n')
     print("maintenance \n", action_maint[:NUM_STATES + 1, 0, 0, 0, :], '\n')
 
-    # graph(action_prod[:NUM_STATES, 0, 0, 0, :],
-    #       action_maint[:NUM_STATES, 0, 0, 0, :])
+    graph(action_prod[:NUM_STATES, 0, 0, 0, :],
+          action_maint[:NUM_STATES, 0, 0, 0, :])
 
 
 if __name__ == "__main__":
