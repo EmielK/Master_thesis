@@ -42,7 +42,7 @@ def graph(actions_1: np.ndarray, actions_2: np.ndarray):
     xlabel = range(-(MAX_BACK_ORDER + 1), MAX_STORAGE + 1)
     ax.set_xticklabels(xlabel)
     ax.xaxis.set_label_position('top')
-    plt.xlim(1, TOTAL_SIZE)
+    plt.xlim(1, TOTAL_SIZE + 1)
     plt.ylim(NUM_STATES + 2, 1)
     plt.savefig('DecisionMatrix.pdf')
     plt.show()

@@ -52,5 +52,7 @@ def maintenance(v: np.ndarray, action: np.ndarray) -> np.ndarray:
             np.argmin([v[state, 0, 0, 0, :],
                        v[0, 0, 0, T_PM, :] + C_PM],
                       axis=0)
-    # print("#", u[0, 0, 0, :, :])
+
+    # print("DN: \n", v[:, 0, 0, 0, :].round(10))
+    # print("M: \n", v[0, 0, 0, T_PM, :].round(10) + C_PM)
     return u

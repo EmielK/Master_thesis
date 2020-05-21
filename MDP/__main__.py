@@ -5,6 +5,8 @@ from MDP.graph import graph
 from MDP.subiterations.flow_cost import flow_cost
 from MDP.subiterations.maintenance import maintenance
 from MDP.subiterations.new_job_arrival import new_job_arrival
+from MDP.subiterations.new_job_arrival_missed_cost \
+    import new_job_arrival_missed_cost
 from MDP.subiterations.new_production import new_production
 from MDP.subiterations.transition_to_next_period import \
     transition_to_next_period
@@ -55,7 +57,10 @@ def main():
         u_2 = new_production(u_3, action_prod)
         u_flow = flow_cost(u_2)
         u_1 = maintenance(u_flow, action_maint)
-        v[n, :, :, :, :, :] = new_job_arrival(u_1)
+        if MAX_BACK_ORDER > 0:
+            v[n, :, :, :, :, :] = new_job_arrival(u_1)
+        else:
+            v[n, :, :, :, :, :] = new_job_arrival_missed_cost(u_1)
 
         # print("transition to next period", '\n',
         #       u_3[:NUM_STATES + 1, 0, 0, 0, :].round(1))
@@ -69,13 +74,14 @@ def main():
         max_it = np.nanmax((v[n, :, :, :, :, :] - v[n - 1, :, :, :, :, :]))
         min_it = np.nanmin((v[n, :, :, :, :, :] - v[n - 1, :, :, :, :, :]))
         span = max_it - min_it
+        gain = (max_it + min_it) / (2 * TIME_STEP_SIZE)
 
         # if n == 100:
         #     break
 
         # print("min: ", min_it)
         # print("max: ", max_it)
-        print(span)
+        # print(span)
 
     # print(PROB_MATRIX_1.round(1))
     print("###########")
@@ -93,6 +99,8 @@ def main():
     #       v[n - 1, :NUM_STATES, 0, 0, 0, :].round(2), '\n')
     print("production \n", action_prod[:NUM_STATES + 1, 0, 0, 0, :], '\n')
     print("maintenance \n", action_maint[:NUM_STATES + 1, 0, 0, 0, :], '\n')
+
+    print("Gain: ", gain)
 
     graph(action_prod[:NUM_STATES, 0, 0, 0, :],
           action_maint[:NUM_STATES, 0, 0, 0, :])
