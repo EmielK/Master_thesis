@@ -10,6 +10,7 @@ from MDP.subiterations.new_job_arrival_missed_cost \
 from MDP.subiterations.new_production import new_production
 from MDP.subiterations.transition_to_next_period import \
     transition_to_next_period
+from MDP.functions import sensitivity_analysis
 
 np.set_printoptions(linewidth=400)
 
@@ -102,11 +103,18 @@ def main():
 
     print("Gain: ", gain)
 
+    f = open("c_pm_stock", "a+")
+    f.write(f"{C_PM} {gain}\n")
+    f.close()
+
     graph(action_prod[:NUM_STATES, 0, 0, 0, :],
           action_maint[:NUM_STATES, 0, 0, 0, :])
 
+    # print('\n', v[n, 0:20, 0, 0, 0, 17])
+
 
 if __name__ == "__main__":
-    # print(PROB_MATRIX_1.round(2))
-    # print(PROB_MATRIX_2.round(2))
-    main()
+    print(PROB_MATRIX_1.round(2))
+    print(PROB_MATRIX_2.round(2))
+    # main()
+    # sensitivity_analysis()

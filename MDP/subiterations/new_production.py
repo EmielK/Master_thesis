@@ -22,7 +22,7 @@ def new_production(v: np.ndarray, action: np.ndarray) -> np.ndarray:
     u[0, 0, 0, 1:, :] = v[0, 0, 0, 1:, :]
 
     # If production is still ongoing:
-    u[:, PROD_1, 1, 0, :] = v[:, PROD_1, 1, 0, :]
+    u[:, PROD_1, 1:, 0, :] = v[:, PROD_1, 1:, 0, :]
 
     # If in the failed state or if the stock is at capacity do nothing.
     # failed state cannot actually occur here.
