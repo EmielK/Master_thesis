@@ -3,18 +3,12 @@ import matplotlib.pyplot as plt
 
 
 def sensitivity_analysis():
-    path = 'C:/Users/emiel/OneDrive/' \
-           'Documenten/Master Thesis/Code/Master_thesis/MDP/'
+    # Fill in parameter of interest below.
+    param = "b_2"
 
-    # data_both = pd.read_csv('b_parameter', sep=" ", header=None)
-    # data_back = pd.read_csv('b_parameter_back', sep=" ", header=None)
-    # data_stock = pd.read_csv('b_parameter_stock', sep=" ", header=None)
-
-    data_both = pd.read_csv('c_pm_both', sep=" ", header=None)
-    data_back = pd.read_csv('c_pm_back', sep=" ", header=None)
-    data_stock = pd.read_csv('c_pm_stock', sep=" ", header=None)
-
-    param = "c_pm"
+    data_both = pd.read_csv(f'data/{param}_both', sep=" ", header=None)
+    data_back = pd.read_csv(f'data/{param}_back', sep=" ", header=None)
+    data_stock = pd.read_csv(f'data/{param}_stock', sep=" ", header=None)
 
     data_both.columns = [param, "both"]
     data_back.columns = [param, "back"]
@@ -34,11 +28,11 @@ def sensitivity_analysis():
                       linestyle='dashed', color="black")
     line3, = plt.plot(data[param], data["stock"], label="stock only",
                       linestyle='dotted', color="black")
-    plt.axvline(x=0.4, ymin=0.01, ymax=1, linestyle="dashed", color="black")
+    plt.axvline(x=0.5, ymin=0.01, ymax=1, linestyle="dashed", color="black")
 
     plt.xlabel(param)
     plt.ylabel('Cost rate')
     plt.title('')
     plt.legend(loc='upper left', handles=[line1, line2, line3])
-    plt.savefig(f'{param}.pdf')
+    plt.savefig(f'graphs/{param}.pdf')
     plt.show()

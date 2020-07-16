@@ -14,19 +14,19 @@ def graph(actions_1: np.ndarray, actions_2: np.ndarray):
 
     Assumes actions_2 is maintenance which overrides production (action_1).
     """
-    # TODO better difference between maintenance and production.
     actions = actions_1
 
     actions[actions_2 == 1] = 3
 
     solution = actions
 
-    print(solution)
-
     extra_column = np.zeros((NUM_STATES, 1))
     extra_row = np.zeros((1, TOTAL_SIZE + 1))
     solution = np.column_stack((extra_column, solution))
     solution = np.row_stack((extra_row, solution))
+
+    if MAX_BACK_ORDER > 0:
+        solution = solution[:, 10:]
 
     ax = sns.heatmap(solution, square=False, linecolor='Black', cbar=False,
                      linewidths=0.1, cmap="Greys")
@@ -39,10 +39,21 @@ def graph(actions_1: np.ndarray, actions_2: np.ndarray):
     plt.xlabel("Backorder index / Stock index")
     plt.ylabel("State")
     ax.xaxis.tick_top()  # x axis on top
-    xlabel = range(-(MAX_BACK_ORDER + 1), MAX_STORAGE + 1)
+
+    # Adjust per graph
+    if MAX_BACK_ORDER > 0 and MAX_BACK_ORDER > 0:
+        xlabel = list(range(-(MAX_BACK_ORDER + 1 - 10), MAX_STORAGE + 1))
+        plt.xlim(1, TOTAL_SIZE + 1 - 10)
+    if MAX_STORAGE == 0 and MAX_BACK_ORDER > 0:
+        xlabel = list(range(-(MAX_BACK_ORDER + 1 - 10), MAX_STORAGE + 1))
+        plt.xlim(1, TOTAL_SIZE + 1 - 10)
+    if MAX_STORAGE > 0 and MAX_BACK_ORDER == 0:
+        xlabel = list(range(-(MAX_BACK_ORDER + 1), MAX_STORAGE + 1))
+        plt.xlim(1, TOTAL_SIZE + 1)
+
     ax.set_xticklabels(xlabel)
     ax.xaxis.set_label_position('top')
-    plt.xlim(1, TOTAL_SIZE + 1)
+
     plt.ylim(NUM_STATES + 2, 1)
-    plt.savefig('DecisionMatrix.pdf')
+    plt.savefig('graphs/DecisionMatrix.pdf')
     plt.show()

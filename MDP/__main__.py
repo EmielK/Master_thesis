@@ -84,37 +84,27 @@ def main():
         # print("max: ", max_it)
         # print(span)
 
-    # print(PROB_MATRIX_1.round(1))
-    print("###########")
-    print(max_it)
-    print("###########")
-    print(min_it)
-    print("###########")
-    print(n)
+    print("iterations:", n)
     # If maintenance is the optimal action this overrides production if
     # production was the optimal action in the step prior so we must correct
     # for this.
     # print("production \n", action_prod[:NUM_STATES, 0, 0, 0, :], '\n')
-    print(v[n, :NUM_STATES + 1, 0, 0, 0, :].round(2), '\n')
+    # print(v[n, :NUM_STATES + 1, 0, 0, 0, :].round(2), '\n')
     # print(v[n, :NUM_STATES, 0, 0, 0, :].round(2) -
     #       v[n - 1, :NUM_STATES, 0, 0, 0, :].round(2), '\n')
-    print("production \n", action_prod[:NUM_STATES + 1, 0, 0, 0, :], '\n')
-    print("maintenance \n", action_maint[:NUM_STATES + 1, 0, 0, 0, :], '\n')
+    # print("production \n", action_prod[:NUM_STATES + 1, 0, 0, 0, :], '\n')
+    # print("maintenance \n", action_maint[:NUM_STATES + 1, 0, 0, 0, :], '\n')
 
     print("Gain: ", gain)
 
-    f = open("c_pm_stock", "a+")
-    f.write(f"{C_PM} {gain}\n")
-    f.close()
+    # f = open("data/c_cm_back", "a+")
+    # f.write(f"{C_PM} {gain}\n")
+    # f.close()
 
     graph(action_prod[:NUM_STATES, 0, 0, 0, :],
           action_maint[:NUM_STATES, 0, 0, 0, :])
 
-    # print('\n', v[n, 0:20, 0, 0, 0, 17])
-
 
 if __name__ == "__main__":
-    print(PROB_MATRIX_1.round(2))
-    print(PROB_MATRIX_2.round(2))
-    # main()
+    main()
     # sensitivity_analysis()
