@@ -10,7 +10,7 @@ from MDP.subiterations.new_job_arrival_missed_cost \
 from MDP.subiterations.new_production import new_production
 from MDP.subiterations.transition_to_next_period import \
     transition_to_next_period
-from MDP.functions import sensitivity_analysis
+from MDP.functions import sensitivity_analysis, stock_analysis
 
 np.set_printoptions(linewidth=400)
 
@@ -75,7 +75,7 @@ def main():
         max_it = np.nanmax((v[n, :, :, :, :, :] - v[n - 1, :, :, :, :, :]))
         min_it = np.nanmin((v[n, :, :, :, :, :] - v[n - 1, :, :, :, :, :]))
         span = max_it - min_it
-        gain = (max_it + min_it) / (2 * TIME_STEP_SIZE)
+        cost_rate = (max_it + min_it) / (2 * TIME_STEP_SIZE)
 
         # if n == 100:
         #     break
@@ -95,16 +95,17 @@ def main():
     # print("production \n", action_prod[:NUM_STATES + 1, 0, 0, 0, :], '\n')
     # print("maintenance \n", action_maint[:NUM_STATES + 1, 0, 0, 0, :], '\n')
 
-    print("Gain: ", gain)
+    print("Cost rate: ", cost_rate)
 
-    # f = open("data/c_cm_back", "a+")
-    # f.write(f"{C_PM} {gain}\n")
-    # f.close()
+    f = open("data/adding_stock", "a+")
+    f.write(f"{MAX_STORAGE} {cost_rate}\n")
+    f.close()
 
     graph(action_prod[:NUM_STATES, 0, 0, 0, :],
           action_maint[:NUM_STATES, 0, 0, 0, :])
 
 
 if __name__ == "__main__":
-    main()
+    # main()
     # sensitivity_analysis()
+    stock_analysis()

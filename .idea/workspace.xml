@@ -2,45 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c726bab-2b71-4f18-b204-1c633b1bdc39" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/other.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MDP/graphs/DecisionMatrix.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MDP/graphs/DecisionMatrix_100.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MDP/graphs/DecisionMatrix_back.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MDP/graphs/DecisionMatrix_both.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MDP/graphs/DecisionMatrix_instance_2.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MDP/graphs/a.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MDP/graphs/b_2.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MDP/graphs/c_cm.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MDP/graphs/c_pm.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MDP/functions/stock_analysis.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MDP/DecisionMatrix.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/MDP/graphs/DecisionMatrix_stock.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MDP/DecisionMatrix_backorder.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MDP/DecisionMatrix_backorder_new.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MDP/DecisionMatrix_new.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MDP/DecisionMatrix_stock.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MDP/DecisionMatrix_stock_new.pdf" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/MDP/__main__.py" beforeDir="false" afterPath="$PROJECT_DIR$/MDP/__main__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MDP/a.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MDP/a_parameter" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MDP/a_parameter_back" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MDP/a_parameter_stock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MDP/b_2.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MDP/b_parameter" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MDP/b_parameter_back" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MDP/b_parameter_stock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MDP/c_cm.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MDP/c_cm_back" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MDP/c_cm_both" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MDP/c_cm_stock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MDP/c_pm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MDP/c_pm.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MDP/c_pm_back" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MDP/c_pm_both" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MDP/c_pm_stock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDP/b.pdf" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/MDP/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/MDP/constants.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MDP/functions/sensitivy_analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/MDP/functions/sensitivy_analysis.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MDP/graph.py" beforeDir="false" afterPath="$PROJECT_DIR$/MDP/graph.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDP/functions/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/MDP/functions/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDP/graphs/DecisionMatrix.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/MDP/graphs/DecisionMatrix.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDP/graphs/a.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/MDP/graphs/a.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDP/graphs/b.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDP/graphs/b_2.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/MDP/graphs/b_2.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDP/graphs/c_cm.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/MDP/graphs/c_cm.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDP/graphs/c_pm.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/MDP/graphs/c_pm.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MDP/subiterations/new_production.py" beforeDir="false" afterPath="$PROJECT_DIR$/MDP/subiterations/new_production.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -159,7 +132,7 @@
       <workItem from="1591961188259" duration="12704000" />
       <workItem from="1593432494747" duration="25229000" />
       <workItem from="1594822986808" duration="1659000" />
-      <workItem from="1594897108812" duration="8431000" />
+      <workItem from="1594897108812" duration="10586000" />
     </task>
     <servers />
   </component>
@@ -194,22 +167,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1591708448419" />
-    <state width="1493" height="282" key="GridCell.Tab.0.bottom" timestamp="1594911030741">
+    <state width="1493" height="282" key="GridCell.Tab.0.bottom" timestamp="1594914076346">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="282" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1594911030741" />
-    <state width="1493" height="282" key="GridCell.Tab.0.center" timestamp="1594911030731">
+    <state width="1493" height="282" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1594914076346" />
+    <state width="1493" height="282" key="GridCell.Tab.0.center" timestamp="1594914076346">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="282" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1594911030731" />
-    <state width="1493" height="282" key="GridCell.Tab.0.left" timestamp="1594911030731">
+    <state width="1493" height="282" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1594914076346" />
+    <state width="1493" height="282" key="GridCell.Tab.0.left" timestamp="1594914076346">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="282" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1594911030731" />
-    <state width="1493" height="282" key="GridCell.Tab.0.right" timestamp="1594911030731">
+    <state width="1493" height="282" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1594914076346" />
+    <state width="1493" height="282" key="GridCell.Tab.0.right" timestamp="1594914076346">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="282" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1594911030731" />
+    <state width="1493" height="282" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1594914076346" />
     <state x="438" y="40" key="SettingsEditor" timestamp="1589799600826">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -237,7 +210,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Python$value_iteration_algorithm.coverage" NAME="value_iteration_algorithm Coverage Results" MODIFIED="1587470849551" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/MDP" />
-    <SUITE FILE_PATH="coverage/Master_thesis$__main__.coverage" NAME="__main__ Coverage Results" MODIFIED="1594911173406" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/MDP" />
+    <SUITE FILE_PATH="coverage/Master_thesis$__main__.coverage" NAME="__main__ Coverage Results" MODIFIED="1594914076341" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/MDP" />
     <SUITE FILE_PATH="coverage/Python$__main__.coverage" NAME="__main__ Coverage Results" MODIFIED="1587652408819" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/MDP" />
   </component>
 </project>

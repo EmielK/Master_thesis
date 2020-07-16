@@ -46,10 +46,6 @@ def new_production(v: np.ndarray, action: np.ndarray) -> np.ndarray:
              v[:NUM_STATES, PROD_1, PROD_LEN_1, 0, :TOTAL_SIZE - 1],
              v[:NUM_STATES, PROD_2, PROD_LEN_2, 0, :TOTAL_SIZE - 1]])
 
-    # print("DN \n", v[82:84, DN, DN, 0, 30].round(10))
-    # print("1 \n", v[82:84, PROD_1, PROD_LEN_1, 0, 30].round(10))
-    # print("2 \n", v[82:84, PROD_2, PROD_LEN_2, 0, 30].round(10))
-
     action[:NUM_STATES, 0, 0, 0, :TOTAL_SIZE - 1] = \
         np.argmin([v[:NUM_STATES, DN, DN, 0, :TOTAL_SIZE - 1],
                    v[:NUM_STATES, PROD_1, PROD_LEN_1, 0, :TOTAL_SIZE - 1],
