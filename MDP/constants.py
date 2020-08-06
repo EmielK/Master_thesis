@@ -7,13 +7,13 @@ STORAGE_COSTS = 0.003  # ~ BACK_ORDER_COSTS / 3
 C_PM = 0.8
 C_CM = 1
 
-T_PM = 1
-T_CM = 3
+T_PM = 3
+T_CM = 4
 
 MAX_BACK_ORDER = 25
-MAX_STORAGE = 10
+MAX_STORAGE = 15
 
-COST_MISSED_ORDER = 1.2
+COST_MISSED_ORDER = 1.2  # 1.2
 
 NUM_STATES = 10
 # No production, 1, and 2.
@@ -34,6 +34,7 @@ PROD_LEN_1 = 2
 PROB_MATRIX_2 = TPM_gammaprocess(a_2, b_2, 1, NUM_STATES, TIME_STEP_SIZE)
 PROD_2 = 2
 PROD_LEN_2 = 1
+PROB_MATRIX_3 = TPM_gammaprocess(a_1/2, b_1, 1, NUM_STATES, TIME_STEP_SIZE)
 # need one index extra since DN is also an option, for initialising array
 MAX_PROD_TIME = PROD_LEN_1 + 1
 MAX_MAIN_TIME = T_CM + 1
@@ -43,7 +44,7 @@ TOTAL_SIZE = MAX_BACK_ORDER + MAX_STORAGE + 1
 DN = 0
 MAINTENANCE = 1
 
-PROB_NEW_JOBS = 0.3
+PROB_NEW_JOBS = 0.35
 MAX_NUM_NEW_JOBS = 3
 PROB_1 = 1/2
 PROB_2 = 1/3

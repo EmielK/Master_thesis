@@ -97,9 +97,9 @@ def main():
 
     print("Cost rate: ", cost_rate)
 
-    f = open("data/adding_stock", "a+")
-    f.write(f"{MAX_STORAGE} {cost_rate}\n")
-    f.close()
+    # f = open("data/adding_stock", "a+")
+    # f.write(f"{MAX_STORAGE} {cost_rate}\n")
+    # f.close()
 
     graph(action_prod[:NUM_STATES, 0, 0, 0, :],
           action_maint[:NUM_STATES, 0, 0, 0, :])
@@ -108,4 +108,8 @@ def main():
 if __name__ == "__main__":
     # main()
     # sensitivity_analysis()
-    stock_analysis()
+    # stock_analysis()
+
+    print(PROB_MATRIX_1.round(2))
+    print(PROB_MATRIX_2.round(2))
+    print(PROB_MATRIX_3.round(2))
